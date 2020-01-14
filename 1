@@ -1,0 +1,246 @@
+# napiszemy funkcję która liczy sumę liczb od 1 do n:
+# w definicji suma(n) wstawić return gdy
+# np przekroczymy 100 i zamienić przy k
+# przy okazji for na while
+def suma():
+    suma, i = 0, 0
+    while suma < 100:
+        suma += i
+        yield suma
+    return suma
+
+li = list(suma(10))
+print(li)
+
+gen = suma(10)
+for i in range(5):
+    print (next(gen))
+    
+    
+# napiszemy funkcję która liczy sumę liczb od 1 do n:
+# w definicji suma(n) wstawić return gdy
+# np przekroczymy 100 i zamienić przy k
+# przy okazji for na while
+# napiszemy funkcję która liczy sumę liczb od 1 do n:
+def suma():
+    sum, i = 0, 0
+    while sum < 100:
+        sum += i
+        yield sum
+    return sum
+
+li = list(suma()
+print(li)
+
+gen = suma()
+for i in range(25):
+    print (next(gen, "koniec!"))
+    
+    
+    
+
+ #----------------------------------------------------
+ def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield b
+        a, b = b, a + b
+
+fib = fibonacci()
+
+print([next(fib) for i in range(10)])
+
+
+#---------------------------------------------
+print ('#' * 50)
+lista = ['pon', 'wt', 'śr', 'czw', 'pią', 'sob', 'nie']
+for licznik, i in enumerate(lista):
+   print(" lp: {} wartość: {}".format(licznik, i))
+   
+#----------------------------------------------
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield b
+        a, b = b, a + b
+### to drukuje w nieskończoność,
+# więc jak to ograniczyć???
+for licznik, i in enumerate(fibonacci()):
+    print(" lp: {} wartość: {}".format(licznik, i))
+    if licznik > 10:
+        break
+# zadanie: mamy listę, sprawdzić czy zadziała enumerate(itd...):
+print ('#' * 50)
+lista = ['pon', 'wt', 'śr', 'czw', 'pią', 'sob', 'nie']
+for licznik, i in enumerate(lista):
+   print(" lp: {} wartość: {}".format(licznik, i))
+#------------------------------------------------
+
+def komunikat(tresc, ile, konczKropka):
+    if tresc and konczKropka and tresc[-1] != '.':
+        tresc += '.'
+    print (tresc * ile)
+
+komunikat(konczKropka = True, ile = 2, tresc = 'Nie ma błędu')
+
+#---------------------------------------------------
+def komunikat(tresc, ile, konczKropka):
+    if tresc and konczKropka and tresc[-1] != '.':
+        tresc += '.'
+    print (tresc * ile)
+def funkcja1(*param):
+    print ("Oto moje parametry:")
+    for ele in param:
+        print (ele)
+#komunikat(konczKropka = True, ile = 1, tresc = 'Nie ma błędu')
+#komunikat('Dziś jest poniedziałek', 2, True)
+funkcja1('Dziś jest poniedziałek', 2, True)
+
+ #--------------------------------------------------
+   
+ ### napisać funkcję average o dowolnej
+# liczbie parametrów która wyliczy ich średnią:
+
+def average(*listaParametrow):
+    suma = 0
+    for j in listaParametrow:
+        suma += j
+    return suma / len(listaParametrow)
+    pass
+
+print (average(1,2,5))
+print (average(1,1,2,2,5,5,7))
+
+ #--------------------------------------------------------------
+ ### napisać funkcję average o dowolnej
+# liczbie parametrów która wyliczy ich średnią:
+### napisać funkcję average o dowolnej
+# liczbie parametrów która wyliczy ich średnią:
+def average(*listaParametrow):
+    suma = 0
+    for j in listaParametrow:
+        suma += j
+    return suma / len(listaParametrow)
+print (average(1,2,5))
+print (average(1,1,2,2,5,5,7))
+### jak przekonwertować listę na argumenty funkcji:
+lista = [4,1,1,1,1,1,5]
+print(average(*lista))
+
+ #----------------------------------------------
+ ### jak przekonwertować listę na argumenty funkcji:
+lista = [4,1,1,1,1,1,5]
+print(average(*lista))
+
+slo = {'tresc': 'Jestem słownikiem', 'ile': 2, 'konczKropka': True}
+komunikat(**slo)
+
+def funkcja2(*par, **slo):
+    print ("Parametry pozycyjne: ", par)
+    print ("Parametry slownikowe: ", slo)
+funkcja2(10, 'Dorota', par1 = 3, par2 = 'Anna')
+
+#----------------------------------------------------------
+# Budujemy hierarchię klas.
+class Zwierzak:
+        """Klasa ulubieńców."""
+        def glos(self):
+                print ('Nie wiem kim jestem')
+        def podwojnyGlos(self):
+                for ile in range(2):
+                        self.glos()
+
+class Kotek(Zwierzak):
+        """Klasa kotów."""
+
+        def glos(self):
+                print ("miau!")
+
+class Piesek(Zwierzak):
+        """Klasa piesków."""
+
+        def glos(self):
+                print ("hau!")
+
+# Klasa nie wywiedziona z Zwierzak.
+class Robot:
+        """Klasa maszyn."""
+
+        def glos(self):
+                print ("witam!")
+
+        def pisk(self):
+                print ("piii!")
+
+        def podwojnyGlos(self):
+                for ile in range(2):
+                        self.glos()
+
+
+# Zwykła funkcja, a nie metoda.
+def polecenie(zwierzak):
+        zwierzak.glos()
+
+def runPrzyklad():
+        zwierzatka = [Kotek(), Piesek(), Robot()]   # konstruktory
+# Przykład polimorfizmu Pythona.
+# Funkcja oczekuje określonego interfejsu (metody speak),
+# a nie określonego typu argumentu.
+        for zwierzak in zwierzatka:
+                polecenie(zwierzak)
+
+        print ('Podwojny glos:')
+        for zwierzak in zwierzatka:
+                zwierzak.podwojnyGlos()
+
+        print ('Odwolanie do postawowej metody')
+        Zwierzak.glos(zwierzatka[0])
+
+        print ('Dokumentacja klas:')
+        for zwierzak in zwierzatka:
+                print(zwierzak.__doc__)
+
+        print (50 * '=')
+
+        ''' podwojne dziedziczenie i problem tak zwanego <<smiertelnego rombu>> '''
+        class T0:
+                def drukuj(self):
+                        print ('0')
+        class T1:
+#       def drukuj(self):
+                for ile in range(2):
+#               print ('#')
+                    pass
+        class T2:
+                def drukuj(self):
+                        print ('*')
+        class T3(T1, T2):
+                pass
+        klasa_t3 = T3()
+        klasa_t3.drukuj()
+        print ('=' * 50)
+        class Osoba:
+# tak definiujemy metody statyczne klasy:
+                @staticmethod
+                def ostatniaLitera(txt):
+                        print (txt[-1])
+                ostatnieNazwisko = ''
+                def __init__(self, imie_p, nazwisko_p):
+                        self.imie = imie_p
+                        self.nazwisko = nazwisko_p
+                        __class__.ostatnieNazwisko = nazwisko_p
+                def opis(self):
+                        print (' {} {} '.format(self.imie, self.nazwisko))
+                def __repr__(self):
+                        return ' Klasa Osoba: {} {} '.format(self.imie, self.nazwisko)
+        oso1 = Osoba('Anna', 'Kowalska')
+        oso2 = Osoba('Dorota', 'Nowak')
+        print (str(oso1))
+        print (str(oso2))
+        print (oso1.__class__.ostatnieNazwisko)
+        print (oso2.__class__.ostatnieNazwisko)
+        Osoba.ostatniaLitera(oso1.imie)
+runPrzyklad()
+
+ #------------------------------------------
+ 
