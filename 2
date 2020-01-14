@@ -1,0 +1,33 @@
+'''
+Napisać skrypt który wczyta z pliku napisy postaci:
+klucz => wartosc, utworzy słownik i wypisze
+jego zawartość posortowaną
+najpierw według kluczy, potem według wartości
+'''
+import os
+sciezka = "C:\\Users\\student\\PycharmProjects\\untitled\\slownik.txt"
+separator = '=>'
+dlugoscSeparatora = len(separator)
+slownik = {}
+if not os.path.isfile(sciezka):
+    print ("Nie ma pliku {} ".format(sciezka))
+    exit(0)
+with open(sciezka, 'r') as F:
+    for linijka in F:
+        linijka = linijka.strip('\n')
+        gdzie = linijka.find(separator)
+        if gdzie == -1:
+            continue
+        klucz = linijka[:gdzie].strip()
+        wartosc = linijka[gdzie + dlugoscSeparatora:].strip()
+#        print("Klucz: {}, wartośc: {}".format(klucz, wartosc))
+        slownik[klucz] = wartosc
+#sortowanie według kluczy
+for klucz in sorted(slownik):
+    print ("Klucz: {} Wartosc: {} ".format(klucz, slownik.get(klucz)))
+print('=' * 50)
+for klucz in sorted(slownik, key=lambda x: int(slownik.get(x))):
+    print ("Klucz: {} Wartosc: {} ".format(klucz, slownik.get(klucz)))
+###########################################################
+#listaWierszyPliku = open(sciezka, 'r').read().split('\n')
+#print (listaWierszyPliku)
